@@ -1,5 +1,5 @@
 import { pool } from "../../database/connection.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 
 const insertNewUser = `
 INSERT INTO  users (username, password, email)
