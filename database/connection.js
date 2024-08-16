@@ -3,17 +3,11 @@ const { Pool } = pkg;
 import createUserTable from '../model/user.js';
 import profile from '../model/profile.js';
 import slot from '../model/slot.js';
+import 'dotenv/config';
 
-// export const pool = new Pool({
-//     user: 'postgres',
-//     host: 'localhost',
-//     database: 'final-project',
-//     password: 'postgres',
-//     port: 5432,
-// });
 
 export const pool = new Pool({
-    connectionString:  "postgres://default:h97RTbsGyqQd@ep-divine-mode-a13xljo7.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require",
+    connectionString: process.env.CONNECTION_STRING,
   })
 
 export const databaseInit = async () => {
@@ -30,6 +24,6 @@ export const databaseInit = async () => {
         await profile();
         await slot();
     } catch(e){
-        console.error('Error while connecting to database');
+        console.error('Error while connecting to database',e);
     }
 };
